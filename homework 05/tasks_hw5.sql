@@ -100,7 +100,7 @@ LEAD. Эта функция сравнивает значения из одно�
 /*/
 SELECT *, 
 TIMEDIFF(
-  LEAD (station_time,1) OVER (PARTITION BY train_id),
+  LEAD (station_time,1) OVER (PARTITION BY train_id ORDER BY station_time ),
   station_time
   )
  AS time_to_next_station
