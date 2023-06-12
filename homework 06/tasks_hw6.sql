@@ -17,16 +17,16 @@ DROP FUNCTION IF EXISTS format_s;
 DELIMITER //
 CREATE FUNCTION format_s ( seconds INT) RETURNS TEXT 
 DETERMINISTIC
-  BEGIN
-    DECLARE str TEXT DEFAULT "";
-    DECLARE sec, min, hours, days INT;
-	  SET days = (seconds - seconds % (24*3600))/(24*3600);
-	  SET hours = (seconds % (24*3600) - seconds % (60*60))/(60*60);
-	  SET min = (seconds % (24*60) - seconds % (60))/60;
-	  SET sec = seconds % 60;
-	  SET str= CONCAT(days," days ", hours ," hours ", min, " minutes ", sec, " seconds");
-	RETURN (str);
-  END//
+BEGIN
+  DECLARE str TEXT DEFAULT "";
+  DECLARE sec, min, hours, days INT;
+  SET days = (seconds - seconds % (24*3600))/(24*3600);
+  SET hours = (seconds % (24*3600) - seconds % (60*60))/(60*60);
+  SET min = (seconds % (24*60) - seconds % (60))/60;
+  SET sec = seconds % 60;
+  SET str= CONCAT(days," days ", hours ," hours ", min, " minutes ", sec, " seconds");
+  RETURN (str);
+END //
 DELIMITER ;
 
 SET @var=123456;
